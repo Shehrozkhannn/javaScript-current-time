@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="timer"></div>
+    <div id = "timechanger"></div>
+    <script>
+        function timerRun() {
+            const timerText = document.querySelector("#timer");
+            const time = new Date().toLocaleTimeString();
+            timerText.innerHTML = time;
+        }
+        setInterval(() => {
+            timerRun();
+        }, 1000);
+        function changetime(){
+            
+            const timer = new Date().toLocaleTimeString();
+            console.log(timer);
+        }
+        setInterval(() => {
+            changetime();
+            
+        }, 1000);
+    </script>
+</body>
+</html>
