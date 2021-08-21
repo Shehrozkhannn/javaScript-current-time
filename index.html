@@ -4,14 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <style>
+        .main-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+        .card {
+            padding: 20px;
+            width: 500px !important;
+            display: none;
+            align-items: center;
+        }
+        .card:hover {
+            transform: scale(1.5);
+            transition: all ease 0.5s;
+        }
+        .card-body {
+            display: flex;
+            justify-content: center;
+        }
+        .showButton {
+            display: block;
+        }
+    </style>
 </head>
 <body>
-    <div>
-        <h1>CURRENT TIME!</h1>
+    <div class="main-container">
+        <div class="card" style="width: 18rem;">
+            <button type="button" class="btn-close" aria-label="Close" onclick="hideAndShowContent()"></button>
+                <h1>CURRENT TIME!</h1>
+            <div class="card-body">
+                <div id="timer"></div>
+            </div>
+          </div>
+          <div class="showButton">
+            <button type="button" class="btn btn-primary" onclick="hideAndShowContent()">Show Time</button>
+          </div>
     </div>
-    <div id="timer"></div>
-    <div id = "timechanger"></div>
     <script>
+        var show = false;
+        function hideAndShowContent() {
+            show = !show;
+            var card = document.querySelector(".card");
+            var showButton = document.querySelector(".showButton");
+            if (!show) {
+                card.style.display = "none";
+                showButton.style.display = "block";
+                
+            } else {
+                showButton.style.display = "none";
+                card.style.display = "block";
+            }
+        }
         function timerRun() {
             const timerText = document.querySelector("#timer");
             const time = new Date().toLocaleTimeString();
@@ -20,15 +69,15 @@
         setInterval(() => {
             timerRun();
         }, 1000);
-        function changetime(){
+        // function changetime(){
             
-            const timer = new Date().toLocaleTimeString();
-            console.log(timer);
-        }
-        setInterval(() => {
-            changetime();
+        //     const timer = new Date().toLocaleTimeString();
+        //     console.log(timer);
+        // }
+        // setInterval(() => {
+        //     changetime();
             
-        }, 1000);
+        // }, 1000);
     </script>
 </body>
 </html>
